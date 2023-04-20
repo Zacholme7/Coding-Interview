@@ -1,6 +1,6 @@
 // Link: https://leetcode.com/problems/binary-tree-preorder-traversal/
 // Difficulty: Easy
-// Date solved: April 19, 2023
+// Date solved: April 20, 2023
 /*
 Solution:
 A preorder traversal is one of the fundamental traversals of a tree. It follows the path of root, left, right.
