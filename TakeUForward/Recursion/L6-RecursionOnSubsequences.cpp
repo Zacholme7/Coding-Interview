@@ -1,6 +1,8 @@
 // Video: https://www.youtube.com/watch?v=AxNNVECce8c&list=PLgUwDviBIf0rGlzIn_7rsaR2FQ5e6ZOL9&index=6
 // Date: May 9, 2023
 // This video talks about going through all subsequences which is a huge part of recursive problems
+// Time complexity: 2 power n * n
+// Space complexity: n
 
 #include <iostream>
 #include <vector>
