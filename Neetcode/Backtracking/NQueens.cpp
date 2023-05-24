@@ -1,6 +1,6 @@
 // Link: https://leetcode.com/problems/n-queens/description/
 // Difficulty: Hard
-// Date solved: May 22, 2023
+// Date solved: May 23, 2023
 /*
 Solution:
 Was able to solve this myself. USE THE RECURSIVE TECHNIQUES AND DRAW OUT THE TREE. This is no more difficult that other problems that I have
