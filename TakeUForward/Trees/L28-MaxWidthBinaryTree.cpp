@@ -3,7 +3,7 @@
 // Date solved: May 25, 2023
 /*
 Solution: 
-just index the tree
+tbh i didnt really pay attention to this one, seems silly
 */
 
 #include <iostream>
