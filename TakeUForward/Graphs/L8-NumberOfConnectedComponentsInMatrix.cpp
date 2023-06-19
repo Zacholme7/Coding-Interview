@@ -5,12 +5,13 @@
 // Time: O(n)
 /*
 Solution
-I think I overengineered this solution and that it could be simpler. Just because I made it hard I think this should be a 
-medium. My idea behind it is very simple. It was just like the last one, just construct a adj list and count the islands. 
-Except this is a 1 0 matrix so I have to convert it into an integer grid so I could make the adj list and then had to make the
-adjList from the grind. From there is just the same as the last problem, a simple dfs
-
-
+This is a graph based problem that just operates on a matrix. We can convert this into an adjacency list and solve it 
+very easily using a dfs or some transerval, but it is easier to just direclty operate on the grid. This is pretty much the same
+as the last problem but instead of using an adj list, we are just working right on the matrix. We make a visited that mirrors the matrix.
+We loop through the matrix and when we find a 1 that is not visited, we preform a bfs on it. This will visit all of its possible connected components
+and then when we return we will keep looking through to find the next non visited one. If we find another non visited 1, that will mean that its because it
+was not reached in our previous traversal so it is not part of that graph, hence on each new finding of an univisted 1 in the main code we can increase the 
+counter and then return it at the end
 */
 
 #include <vector>
@@ -21,79 +22,43 @@ using namespace std;
 
 class Solution {
 public:
-
-    unordered_map<int, vector<int>> constructAdjList(vector<vector<int>> &grid) {
-        int dx[8] = {-1, -1, -1, 0, 0, 1, 1, 1};
-        int dy[8] = {-1, 0, 1, -1, 1, -1, 0, 1};
-        unordered_map<int, vector<int>> adjList;
-        for(int row = 0; row < grid.size(); row++) {
-            for(int col = 0; col < grid[row].size(); col++) {
-                if(grid[row][col] != 0) {
-                    adjList[grid[row][col]] = vector<int>();
-                    for(int k = 0; k < 8; k++) {
-                        int ni = row + dx[k];
-                        int nj = col + dy[k];
-
-                        if(ni >= 0 && nj >= 0 && ni < grid.size() && nj < grid[0].size()) {
-                            if(grid[ni][nj] != 0) {
-                                adjList[grid[row][col]].push_back(grid[ni][nj]);
-                            }
+    void bfs(vector<vector<char>> &grid, vector<vector<bool>> &visited, queue<pair<int, int>> &nodeQ) {
+        while(!nodeQ.empty()) {
+            auto dimPair = nodeQ.front(); nodeQ.pop();
+            int row = dimPair.first;
+            int col = dimPair.second;
+            for(int neighRow = -1; neighRow <= 1; neighRow++) {
+                for(int neighCol = -1; neighCol <= 1; neighCol++) {
+                    int newRow = neighRow + row;
+                    int newCol = neighCol + col;
+                    if(newRow >= 0 && newCol >= 0 && newRow < grid.size() && newCol < grid[0].size()){
+                        if(grid[newRow][newCol] == '1' && !visited[newRow][newCol]) {
+                            visited[newRow][newCol] = true;
+                            nodeQ.push({newRow, newCol});
                         }
                     }
                 }
             }
         }
-        return adjList;
-    }
-
-    vector<vector<int>> constructIntGrid(vector<vector<char>> &grid) {
-        int counter = 1;
-        vector<vector<int>> intGrid;
-        for(int row = 0; row < grid.size(); row++) {
-            vector<int> tmp;
-            for(int col = 0; col < grid[row].size(); col++) {
-                if(grid[row][col] == '1') {
-                    tmp.push_back(counter++);
-                } else {
-                    tmp.push_back(0);
-                }
-            }
-            intGrid.push_back(tmp);
-        }
-        return intGrid;
-
-    }
-
-    void dfs(int node, vector<bool> &visited, unordered_map<int, vector<int>> &adjList) {
-        visited[node] = true;
-        for(auto neigh: adjList[node]) {
-            if(!visited[neigh]) {
-                dfs(neigh, visited, adjList);
-            }
-        }
     }
 
     int numIslands(vector<vector<char>>& grid) {
-        // adjust grid to be ints and incremental
-        int res = 0;
-        vector<vector<int>> intGrid = constructIntGrid(grid);
-        unordered_map<int, vector<int>> adjList = constructAdjList(intGrid);
-        vector<bool> visited(adjList.size() + 1);
-
-        cout << intGrid << endl;
-        for(auto it: adjList) {
-            cout << it.first << " " << it.second <<endl;
-        }
-
-
-        for(auto pair: adjList) {
-            if(!visited[pair.first]) {
-                res++;
-                dfs(pair.first, visited, adjList);
+        int numIslands = 0;
+        vector<vector<bool>> visited(grid.size(), vector<bool>(grid[0].size()));
+        queue<pair<int, int>> nodeQ;
+        for(int i = 0; i < grid.size(); i++) {
+            for(int j = 0; j < grid[0].size(); j++) {
+                if(grid[i][j] == '1' && !visited[i][j]) {
+                    visited[i][j] = true;
+                    numIslands++;
+                    nodeQ.push({i, j});
+                    bfs(grid, visited, nodeQ);
+                }
             }
         }
-        return res;
+        return numIslands;
     }
+        
 };
 
 
@@ -101,6 +66,7 @@ int main() {
     Solution sol;
     vector<vector<char>> grid = {{'0', '1'}, {'1', '0'},{'1', '1'},{'1', '0'}};
     vector<vector<char>> grid2 = { {'1', '0', '1', '0', '0', '1', '1', '0', '1' }};
+    cout << sol.numIslands(grid) << endl;
     cout << sol.numIslands(grid2) << endl;
     return 0;
 }

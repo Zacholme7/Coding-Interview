@@ -1,4 +1,4 @@
-// Link: https://practice.geeksforgeeks.org/problems/number-of-provinces/1?utm_source=youtube&utm_medium=collab_striver_ytdescription&utm_campaign=number_of_provinces
+// Link: https://leetcode.com/problems/number-of-provinces/submissions/974089841/ 
 // Difficulty: Easy
 // Date: June 15, 2023
 // Space: O(n)
@@ -16,11 +16,10 @@ we know this is a new provice/graph so we can increase the counter and explore i
 #include <queue>
 #include <unordered_map>
 using namespace std;
-
 class Solution {
-  public:
-
-    void dfs(int node, vector<bool> &visited, unordered_map<int, vector<int>> &adj) {
+public:
+   
+     void dfs(int node, vector<bool> &visited, unordered_map<int, vector<int>> &adj) {
         visited[node] = true;
         for(auto neigh : adj[node]) {
             if(!visited[neigh]) {
@@ -29,12 +28,12 @@ class Solution {
         }
     }
 
-    int numProvinces(vector<vector<int>> adj, int V) {
-        vector<bool> visited(V);
+    int findCircleNum(vector<vector<int>> &adj) {
+        vector<bool> visited(adj.size());
         unordered_map<int, vector<int>> mpAdj;
         int numProvinces = 0;
 
-        for(int i = 0; i < V; i++) {
+        for(int i = 0; i < adj.size(); i++) {
             for(int j = 0; j < adj[i].size(); j++) {
                 if(i != j && adj[i][j] == 1) {
                     mpAdj[i].push_back(j);
@@ -42,8 +41,7 @@ class Solution {
             }
         }
 
-
-        for(int i = 0; i < V; i++) {
+        for(int i = 0; i < adj.size(); i++) {
             if(!visited[i]) {
                 numProvinces++;
                 dfs(i, visited, mpAdj);
