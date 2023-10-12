@@ -12,7 +12,7 @@ one so we get a smaller sum. If the sum is the target, we just return the pointe
 
 #include <iostream>
 #include <vector>
-#include "../../Util.cpp"
+#include "../../../Util.cpp"
 using namespace std;
 
 class Solution {
@@ -33,7 +33,6 @@ public:
         return {-1, -1};
     }
 };
-
 int main() {
     Solution sol;
     vector<int> test1 = {2 ,7, 11, 15};
