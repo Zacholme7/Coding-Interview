@@ -10,8 +10,6 @@
 # our index, this means that we can pick this number again. If we exceed the target, that is when we want to take it off
 
 
-
-
 class Solution:
 
     def combination_sum_helper(self, idx, curr_sum, res, tracker, candidates):
@@ -27,10 +25,6 @@ class Solution:
 
         self.combination_sum_helper(idx + 1, curr_sum, res, tracker, candidates)
         
-
-
-
-
     def combination_sum(self, candidates, target):
         res = []
         tracker = []
