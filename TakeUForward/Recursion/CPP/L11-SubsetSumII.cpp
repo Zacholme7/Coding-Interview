@@ -12,7 +12,7 @@ a repeat element more than once at first.
 #include <vector>
 #include <iostream>
 #include <algorithm>
-#include "../../Util.cpp"
+#include "../../../Util.cpp"
 using namespace std;
 
 class Solution {
