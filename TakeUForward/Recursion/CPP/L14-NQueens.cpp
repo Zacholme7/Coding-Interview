@@ -16,7 +16,7 @@ means that we were able to find a safe square for all the queens.
 #include <iostream>
 #include <algorithm>
 #include <string>
-#include "../../Util.cpp"
+#include "../../../Util.cpp"
 using namespace std;
 
 class Solution {

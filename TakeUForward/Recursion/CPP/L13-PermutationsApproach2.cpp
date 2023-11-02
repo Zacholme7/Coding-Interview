@@ -14,7 +14,7 @@ and create a new permutation.
 #include <vector>
 #include <iostream>
 #include <algorithm>
-#include "../../Util.cpp"
+#include "../../../Util.cpp"
 using namespace std;
 
 class Solution {
