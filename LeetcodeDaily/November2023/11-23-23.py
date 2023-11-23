@@ -25,7 +25,6 @@ class Solution:
             return True
 
 		# array to check all numbers in A.P. are present in input array.
-		# A.P.[minArr, minArr+d, minArr+2d, . . . . . . . maxArr]
         check = [1]*len(arr)
         for num in arr:
             if (num-minArr)%diff != 0:
