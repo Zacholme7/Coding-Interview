@@ -3,6 +3,7 @@
 # Date Solved: November 23, 2023
 
 class Solution:
+
     def checkArithmeticSubarrays(self, nums, l, r):
         out=[]
         for i, j in zip(l, r):
