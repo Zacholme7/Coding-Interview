@@ -1,21 +1,14 @@
-# Link: https://leetcode.com/problems/permutations/description/
-# Difficulty: Medium
+# Link: https://leetcode.com/problems/special-positions-in-a-binary-matrix/?envType=daily-question&envId=2023-12-13
+# Difficulty: Easy
 # Date Solved: December 13, 2023
 
 class Solution:
-    def helper(tracker, nums, res):
-        if len(tracker) == len(nums):
-            res.append(tracker.copy())
-            return
-
-        for num in nums:
-            if num in tracker:
-                continue
-            tracker.append(num)
-            self.helper(tracker, nums, res)
-            tracker.pop()
-
-    def permute(self, nums):
-        nums = []
-        self.tracker([], nums, res)
-        return nums
+    def numSpecial(self, mat: List[List[int]]) -> int:
+        count = 0
+        pivot = list(zip(*mat))
+        for row in mat:
+            if sum(row) == 1:
+                j = row.index(1)
+                if sum(pivot[j]) == 1:
+                    count += 1
+        return count
