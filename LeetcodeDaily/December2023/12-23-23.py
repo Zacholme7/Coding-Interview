@@ -2,7 +2,6 @@
 # difficulty: easy
 # date solved: december 23, 2023
 
-from collections import defaultdict
 class Solution:
     def isPathCrossing(self, path):
         seenPt = set()
@@ -17,14 +16,10 @@ class Solution:
                 curY -= 1
             else:
                 curX -= 1
-                
+
             tmpHash = str(curX) + "," + str(curY)
             if tmpHash in seenPt:
                 return True
             seenPt.add(tmpHash)
 
         return False
-
-
-
-
