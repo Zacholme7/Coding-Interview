@@ -2,10 +2,17 @@
 # difficulty: easy
 # date solved: janauary 23, 2024
 
-
 class Solution:
     def check(self, nums):
+        numLen = len(nums)
+        counter = 0
+        for idx in range(0, len(nums)):
+            if nums[idx] > nums[(idx + 1) % numLen]:
+                counter += 1
 
+        if counter <= 1:
+            return True
+        return False
 
 
 if __name__ == "__main__":
