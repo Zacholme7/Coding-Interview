@@ -1,0 +1,7 @@
+- When a function calls itself until a specified condition is met
+- Infinite recursion will lead to stack overflow 
+- Recurse until a specific condition is met
+  - This is the base case
+- The recursive calls can form a recursion tree
+
+

@@ -1,0 +1,9 @@
+- "Those who cannot remember the past are condemmed to repeat it"
+- Methods of dp
+1) Tabulation -> Bottom up
+2) Memoization -> Top down
+
+
+
+
+
