@@ -1,5 +1,4 @@
-// link:
-// https://leetcode.com/problems/find-bottom-left-tree-value/?envType=daily-question&envId=2024-02-28
+// link: https://leetcode.com/problems/find-bottom-left-tree-value/?envType=daily-question&envId=2024-02-28
 // difficulty: medium
 // date solved: february 28, 2024
 
