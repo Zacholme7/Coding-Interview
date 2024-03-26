@@ -1,6 +1,8 @@
 // link: https://leetcode.com/problems/validate-binary-search-tree/description/
 // difficulty: medium
 // date solved: march 24, 2024
+// solution writeup: just to a inorder traversal to get the nodes in 
+// inorder and then make sure they are in increasing order
 
 #include <vector>
 using namespace std;

@@ -1,6 +1,9 @@
 # link: https://leetcode.com/problems/find-all-duplicates-in-an-array/?envType=daily-question&envId=2024-03-25
 # difficulty: medium
 # date solved: march 25, 2024
+# solution writeup: just count up all the occurences of all the words
+# and see which ones appear more than once
+
 from collections import defaultdict;
 
 class Solution:
