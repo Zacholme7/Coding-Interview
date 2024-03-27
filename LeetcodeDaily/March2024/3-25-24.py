@@ -3,8 +3,8 @@
 # date solved: march 25, 2024
 # solution writeup: just count up all the occurences of all the words
 # and see which ones appear more than once
+from collections import defaultdict
 
-from collections import defaultdict;
 
 class Solution:
     def findDuplicates(self, nums):
@@ -20,12 +20,8 @@ class Solution:
         return res
 
 
-
-
 if __name__ == "__main__":
     sol = Solution()
-    print(sol.findDuplicates(nums = [4,3,2,7,8,2,3,1]))
-    print(sol.findDuplicates(nums = [1,1,2]))
-    print(sol.findDuplicates(nums = []))
-
-
+    print(sol.findDuplicates(nums=[4, 3, 2, 7, 8, 2, 3, 1]))
+    print(sol.findDuplicates(nums=[1, 1, 2]))
+    print(sol.findDuplicates(nums=[]))
