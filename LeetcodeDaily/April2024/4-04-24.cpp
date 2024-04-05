@@ -4,27 +4,23 @@
 // writeup: whenever we get a new opening, this is a new depth addition so just add it to the counter. Whenver we get a closing,
 // this is completing an opening so we decrement our counter since we are going back a depth. just take the max at each iteration
 // and return the result at the end
-#include <stack>
 #include <string>
 using namespace std;
 
 class Solution {
 public:
   int maxDepth(string s) {
-    stack<char> parenStack;
     int res = 0;
     int currentDepth = 0;
 
     // go through all of the characters
     for (auto &c : s) {
       if (c == '(') {
-        parenStack.push('(');
         currentDepth++;
+        res = max(res, currentDepth);
       } else if (c == ')') {
-        parenStack.pop();
         currentDepth--;
       }
-      res = max(res, currentDepth);
     }
     return currentDepth;
   }
