@@ -34,8 +34,6 @@ public:
                 r2 = r2==0 ? r2 : r2-1;
 
                 //Use them as your answer
-                //{r1, c1} = {i, j}
-                //{r2, c2} = {r2, c1}
                 result.push_back({i, j, r2, c1});
                 
                 //Now, mark the covered land with 0 so that you don't consider them later
