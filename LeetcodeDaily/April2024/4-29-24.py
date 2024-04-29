@@ -1,0 +1,26 @@
+# link: https://leetcode.com/problems/minimum-number-of-operations-to-make-array-xor-equal-to-k/description/?envType=daily-question&envId=2024-04-29
+# difficulty: medium
+# date solved: april 29, 2024
+
+
+class Solution:
+    def minOperations(self, nums, k):
+        final_xor = 0
+        # XOR of all integers in the array.
+        for n in nums:
+            final_xor = final_xor ^ n
+
+        count = 0
+        # Keep iterating until both k and final_xor becomes zero.
+        while k or final_xor:
+            # k % 2 returns the rightmost bit in k,
+            # final_xor % 2 returns the rightmost bit in final_xor.
+            # Increment counter, if the bits don't match.
+            if (k % 2) != (final_xor % 2):
+                count += 1
+
+            # Remove the last bit from both integers.
+            k //= 2
+            final_xor //= 2
+
+        return count
