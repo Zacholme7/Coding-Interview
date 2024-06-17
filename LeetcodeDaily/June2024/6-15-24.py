@@ -3,6 +3,7 @@
 # date solved: june 15, 2024
 import heapq
 
+
 class Solution:
     def findMaximizedCapital(self, k, w, profits, capital):
         n = len(profits)

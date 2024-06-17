@@ -2,17 +2,18 @@
 // difficulty: medium
 // date solved: june 14, 2024
 #include <vector>
+#include <algorithm>
 using namespace std;
 
 class Solution {
 public:
-    int minIncrementForUnique(vector<int>& nums) {
-        sort(nums.begin(), nums.end());
-        int res = 0, need = 0;
-        for (int num: nums) {
-            res += max(need - num, 0);
-            need = max(num, need)+1;
-        }
-        return res;
+  int minIncrementForUnique(vector<int> &nums) {
+    sort(nums.begin(), nums.end());
+    int res = 0, need = 0;
+    for (int num : nums) {
+      res += max(need - num, 0);
+      need = max(num, need) + 1;
     }
+    return res;
+  }
 };
