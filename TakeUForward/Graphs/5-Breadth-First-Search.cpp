@@ -15,18 +15,28 @@ public:
     q.push(0);
     visited[0] = true;
 
+    int level = 0;
     while (!q.empty()) {
-      int node = q.front();
-      q.pop();
-      bfs.push_back(node);
+      int levelSize = q.size();
 
-      for (int neighbor : adj[node]) {
-        if (!visited[neighbor]) {
-          visited[neighbor] = true;
-          q.push(neighbor);
+      // Process all nodes at the current level
+      for (int i = 0; i < levelSize; i++) {
+        int node = q.front();
+        q.pop();
+        bfs.push_back(node);
+
+        // Add unvisited neighbors to the queue
+        for (int neighbor : adj[node]) {
+          if (!visited[neighbor]) {
+            visited[neighbor] = true;
+            q.push(neighbor);
+          }
         }
       }
+
+      level++;
     }
+
     return bfs;
   }
 };
